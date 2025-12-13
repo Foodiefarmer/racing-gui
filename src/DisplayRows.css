@@ -1,0 +1,37 @@
+/*Container for the entire app*/
+.parameter-list-container {
+  max-width: 320px;
+  max-height: 480px;
+  background-color: rgb(255, 255, 255);
+  color: black;
+  font-family: Arial, Helvetica, sans-serif; /*This might be changed later on in the project, depending on the font we end up choosing*/
+}
+
+/*Style for each row*/
+.parameter-row {
+  display: flex;
+  justify-content: space-between; /*Push parameter name to left and value to the right*/
+  align-items: center;
+  padding: 15px 10px;
+  border-bottom: 1px solid black;
+}
+
+/*Style for parameter name(/label)*/
+.parameter-label {
+  font-style: normal;
+}
+
+/*Style for parameter value*/
+.parameter-value {
+  font-style: normal;
+}
+
+/*Creater thicker line below last live parameter*/
+.parameter-row:nth-child(6) {
+  border-bottom: 2px solid black;
+}
+
+/*Remove line at the bottom*/
+.parameter-row:last-child {
+  border-bottom: none;
+}
