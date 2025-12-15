@@ -1,10 +1,11 @@
 /*Container for the entire app*/
 .parameter-list-container {
-  max-width: 320px;
-  max-height: 480px;
+  max-width: 318px;
+  max-height: 320px;
   background-color: rgb(255, 255, 255);
   color: black;
   font-family: Arial, Helvetica, sans-serif; /*This might be changed later on in the project, depending on the font we end up choosing*/
+  border: 1px solid #000000;
 }
 
 /*Style for each row*/

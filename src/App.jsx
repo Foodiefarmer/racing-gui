@@ -7,7 +7,6 @@ function App() {
   return (
     <div className="App-container">
       <LiveBlocks></LiveBlocks>
-      <h1>does this work?</h1>
       <ParameterDisplay />
     </div>
   )

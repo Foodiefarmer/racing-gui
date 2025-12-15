@@ -4,46 +4,41 @@
         "name": "Core Temp",
         "unit": "°C",
         "dataType": "numeric",
-        "min": 150.0,
-        "max": 250.0
+        "value": 150.0
     },
     {
         "id": 2,
         "name": "Break Pressure",
         "unit": "bar",
         "dataType": "numeric",
-        "min": 10.0,
-        "max": 15.0
+        "value": 10.0
     },
     {
         "id": 3,
         "name": "Coolant Flow Rate",
         "unit": "L/min",
         "dataType": "numeric",
-        "min": 50.0,
-        "max": 100.0
+        "value": 50.0
     },
     {
         "id": 4,
         "name": "Valve Status A1",
         "unit": "",
-        "dataType": "discrete",
-        "options": ["OPEN", "CLOSED", "FAULT"]
+        "dataType": "numeric",
+        "value": 1
     },
     {
         "id": 5,
         "name": "Power Output",
         "unit": "kW",
         "dataType": "numeric",
-        "min": 800.0,
-        "max": 1200.0
+        "value": 800.0
     },
     {
         "id": 6,
         "name": "Rotation Speed",
         "unit": "RPM",
         "dataType": "numeric",
-        "min": 1500,
-        "max": 2000
+        "value": 1500
     }
 ]
