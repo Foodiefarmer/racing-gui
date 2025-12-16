@@ -2,20 +2,14 @@
     /* Set the overall size constraints for the component */
     max-width: 320px;
     max-height: 160px;
-    
-    /* Ensure no overflow if content unexpectedly exceeds boundaries */
     overflow: hidden; 
     
 }
 
 .live-parameter-grid {
-    /* Use CSS Grid to create the 2 columns and dynamic rows */
-    display: grid;
-    
+    display: grid; 
     /* Create two columns of equal width */
     grid-template-columns: 1fr 1fr;
-    
-    /* Allow the grid to fill the remaining vertical space of the container */
     height: 100%; 
 
 }
@@ -25,10 +19,9 @@
     box-sizing: border-box;
     
     /* Define the cell appearance */
-    background-color: #ffffff; /* White background as shown in the image */
+    background-color: #ffffff; 
     border: 1px solid #000000; /* Black border for separation */
     
-    /* Layout for content inside the cell */
     display: flex;
     flex-direction: column;
     justify-content: center; /* Center content vertically */
@@ -37,7 +30,6 @@
     /* Space inside the block */
     padding: 5px;
     
-    /* Ensure equal height by using minmax in grid (or relying on grid auto-flow) */
     min-height: 50px; /* A minimum height to ensure blocks are visible */
     
     /* Center the text within the cell */
@@ -45,7 +37,6 @@
 }
 
 .parameter-name {
-    /* Style for the parameter title (e.g., "Reactor Core Temp") */
     font-size: 0.55rem;
     color: #555;
     margin: 0 0 3px 0; /* Space below the name */

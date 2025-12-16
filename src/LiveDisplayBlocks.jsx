@@ -29,24 +29,22 @@ const fetchParameters = useCallback(async () => {
       
       setParameters(updatedData);
       
-      // If successful, we are no longer loading
       setIsLoading(false);
       setError(null);
 
     } catch (e) {
       console.error("Failed to fetch parameters:", e);
       setError(e.message);
-      // Only set loading to false if we had an initial load attempt
       if (isLoading) setIsLoading(false);
     }
-  }, [isLoading]); // Dependency on isLoading to avoid issues on first run
+  }, [isLoading]);
 
-  // --- useEffect for Initial Load and Polling Interval ---
+  // useEffect for Initial Load and Polling Interval
   useEffect(() => {
-    // 1. Run immediately on mount to get the initial data
+    // Run immediately on mount to get the initial data
     fetchParameters(); 
 
-    // 2. Set up the polling interval
+    // Set up the polling interval
     const intervalId = setInterval(() => {
       fetchParameters();
     }, UPDATE_INTERVAL_MS); 
