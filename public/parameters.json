@@ -40,5 +40,33 @@
         "unit": "RPM",
         "dataType": "numeric",
         "value": 1500
+    },
+    {
+        "id": 7,
+        "name": "TV_g",
+        "unit": "",
+        "dataType": "numeric",
+        "value": "11"
+    },
+    {
+        "id": 8,
+        "name": "TC_TV_map",
+        "unit": "",
+        "dataType": "numeric",
+        "value": "68"
+    },
+    {
+        "id": 9,
+        "name": "Mu",
+        "unit": "",
+        "dataType": "numeric",
+        "value": "1.6"
+    },
+    {
+        "id": 10,
+        "name": "Bypass",
+        "unit": "",
+        "dataType": "numeric",
+        "value": "0"
     }
 ]
