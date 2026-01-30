@@ -9,6 +9,8 @@ const ParameterDisplay = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const [activeIndex, setActiveIndex] =useState(0);
+
   const allParameters = [
     { label: "TV_g", key : "TV_g" },
     { label: "TC_TV_map", key: "TC_TV_map" },
@@ -43,6 +45,20 @@ const ParameterDisplay = () => {
     }
   }, [isLoading]);
 
+  //Event listener for the focus
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === "ArrowDown") {
+        setActiveIndex((prev) => (prev + 1) % allParameters.length);
+      } else if (event.key === "ArrowUp") {
+        setActiveIndex((prev) => (prev - 1 + allParameters.length) % allParameters.length);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [allParameters.length]);
+
   // Handle Polling
   useEffect(() => {
       fetchParameters(); 
@@ -58,14 +74,16 @@ const ParameterDisplay = () => {
 
     return (
     <div className="parameter-list-container">
-      {allParameters.map((param) => {
+      {allParameters.map((param, index) => {
         // Look up the value from the live state using the key
         const displayValue = data[param.key] !== undefined ? data[param.key] : "---";
+
+        const isFocused = index ===activeIndex
 
         return (
           <div key={param.key} className="parameter-row">
             <div className="parameter-label">{param.label}</div>
-            <div className="parameter-value">
+            <div className={"parameter-value" + (isFocused ? " focused" : "")}>
                 {isLoading && displayValue === "---" ? "Loading..." : displayValue}
             </div>
           </div>

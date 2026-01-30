@@ -36,3 +36,11 @@
 .parameter-row:last-child {
   border-bottom: none;
 }
+
+/*focused row/value*/
+.parameter-value.focused {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-decoration-color: blue;
+  font-weight: bold;
+}
