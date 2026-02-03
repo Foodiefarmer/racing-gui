@@ -83,7 +83,7 @@ const ParameterDisplay = () => {
         return (
           <div key={param.key} className="parameter-row">
             <div className="parameter-label">{param.label}</div>
-            <div className={"parameter-value" + (isFocused ? " focused" : "")}>
+            <div className={"parameter-row" + (isFocused ? " focused" : "")}>
                 {isLoading && displayValue === "---" ? "Loading..." : displayValue}
             </div>
           </div>
