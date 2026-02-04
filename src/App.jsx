@@ -49,22 +49,22 @@ function App() {
 
   return (
     <div className="App-container">
-      <LiveBlocks></LiveBlocks>
+      <LiveBlocks />
 
-      <ParameterDisplay 
-        parameters={TAB_CONFIG[activeTab].params} 
-        isActive={true} 
-      />
+      <div className="parameter-list-container"> {/* De witte box */}
+        <ParameterDisplay 
+          parameters={TAB_CONFIG[activeTab].params} 
+          isActive={true} 
+        />
 
-      <div className="tab-bar">
-        {TAB_CONFIG.map((tab, index) => (
-          <div 
-            key={tab.id} 
-            className={`tab-item ${activeTab === index ? "active" : ""}`}
-          >
-            {tab.title}
-          </div>
-        ))}
+        <div className="tab-bar">
+          {TAB_CONFIG.map((tab, index) => (
+            <div 
+              key={tab.id} 
+              className={`tab-item ${activeTab === index ? "active" : ""}`}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

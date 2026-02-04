@@ -6,6 +6,7 @@
   color: black;
   font-family: Arial, Helvetica, sans-serif; /*This might be changed later on in the project, depending on the font we end up choosing*/
   border: 1px solid #000000;
+  position: relative;
 }
 
 /*Style for each row*/
@@ -50,25 +51,25 @@
 }*/
 
 .tab-bar {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
-  width: 100%;
-  max-width: 318px; 
-  background-color: #333;
-  margin-top: -1px;
+  gap: 8px;
+  z-index: 10;
 }
 
 .tab-item {
-  flex: 1;
-  text-align: center;
-  padding: 8px 0;
-  font-size: 12px;
-  color: #aaa;
-  border: 1px solid #000;
-  text-transform: uppercase;
+  width: 10px;
+  height: 10px;
+  background-color: #999;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
 }
 
+
 .tab-item.active {
-  background-color: #b0d6ff;
-  color: black;
-  font-weight: bold;
+  background-color: #000000;
 }
