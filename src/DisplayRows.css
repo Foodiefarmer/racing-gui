@@ -48,3 +48,27 @@
   color: black;
   font-weight: bold;
 }*/
+
+.tab-bar {
+  display: flex;
+  width: 100%;
+  max-width: 318px; 
+  background-color: #333;
+  margin-top: -1px;
+}
+
+.tab-item {
+  flex: 1;
+  text-align: center;
+  padding: 8px 0;
+  font-size: 12px;
+  color: #aaa;
+  border: 1px solid #000;
+  text-transform: uppercase;
+}
+
+.tab-item.active {
+  background-color: #b0d6ff;
+  color: black;
+  font-weight: bold;
+}

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import "./DisplayRows.css";
 
-const ParameterDisplay = () => {
+const ParameterDisplay = ({ parameters, isActive}) => {
   const UPDATE_INTERVAL_MS = 200;
 
   // State to hold the live data for the parameters
@@ -10,13 +10,6 @@ const ParameterDisplay = () => {
   const [error, setError] = useState(null);
 
   const [activeIndex, setActiveIndex] =useState(0);
-
-  const allParameters = [
-    { label: "TV_g", key : "TV_g" },
-    { label: "TC_TV_map", key: "TC_TV_map" },
-    { label: "Mu", key: "Mu" },
-    { label: "Bypass", key: "Bypass" }
-  ];
 
   // Function to fetch data and convert the array to an object
   const fetchParameters = useCallback(async () => {
@@ -47,17 +40,19 @@ const ParameterDisplay = () => {
 
   //Event listener for the focus
   useEffect(() => {
+    if (!isActive) return;
+
     const handleKeyDown = (event) => {
       if (event.key === "ArrowDown") {
-        setActiveIndex((prev) => (prev + 1) % allParameters.length);
+        setActiveIndex((prev) => (prev + 1) % parameters.length);
       } else if (event.key === "ArrowUp") {
-        setActiveIndex((prev) => (prev - 1 + allParameters.length) % allParameters.length);
+        setActiveIndex((prev) => (prev - 1 + parameters.length) % parameters.length);
       }
     };
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [allParameters.length]);
+  }, [parameters.length, isActive]);
 
   // Handle Polling
   useEffect(() => {
@@ -73,24 +68,25 @@ const ParameterDisplay = () => {
     if (error) return <div className="error">Error: {error}</div>
 
     return (
-    <div className="parameter-list-container">
-      {allParameters.map((param, index) => {
-        // Look up the value from the live state using the key
+      <div className="parameter-list-container">
+        {parameters.map((param, index) => {
         const displayValue = data[param.key] !== undefined ? data[param.key] : "---";
-
-        const isFocused = index ===activeIndex
+        const isFocused = index === activeIndex;
 
         return (
-          <div key={param.key} className="parameter-row">
+          <div 
+            key={param.key} 
+            className={`parameter-row ${isFocused ? "focused" : ""}`} // Schoner dan je oude versie
+          >
             <div className="parameter-label">{param.label}</div>
-            <div className={"parameter-row" + (isFocused ? " focused" : "")}>
-                {isLoading && displayValue === "---" ? "Loading..." : displayValue}
+            <div className="parameter-value"> 
+              {isLoading && displayValue === "---" ? "Loading..." : displayValue}
             </div>
           </div>
         );
-      })}
-    </div>
-  );
+        })}
+      </div>
+    );
 }
 
 export default ParameterDisplay;
