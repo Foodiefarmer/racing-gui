@@ -1,17 +1,14 @@
 import React, { useState, useEffect, useCallback } from "react";
 import "./DisplayRows.css";
 
-const ParameterDisplay = ({ parameters, isActive}) => {
+const ParameterDisplay = ({ parameters, isActive, onPageChange }) => {
   const UPDATE_INTERVAL_MS = 200;
 
-  // State to hold the live data for the parameters
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [activeIndex, setActiveIndex] = useState(0);
 
-  const [activeIndex, setActiveIndex] =useState(0);
-
-  // Function to fetch data and convert the array to an object
   const fetchParameters = useCallback(async () => {
     try {
       const response = await fetch('/parameters.json');
@@ -21,10 +18,15 @@ const ParameterDisplay = ({ parameters, isActive}) => {
       
       const jsonArray = await response.json();
       
-      // Convert the array [ {name: "TV_g", value: "11"}, ... ] 
-      // into an object { TV_g: "11", ... } to match initial structure
+      const pageData = jsonArray.find(obj => obj.page !== undefined);
+      if (pageData && onPageChange) {
+        onPageChange(pageData.page);
+      }
+
       const formattedData = jsonArray.reduce((acc, item) => {
-        acc[item.name] = item.value;
+        if (item.name) {
+          acc[item.name] = item.value;
+        }
         return acc;
       }, {});
 
@@ -36,9 +38,8 @@ const ParameterDisplay = ({ parameters, isActive}) => {
       setError(e.message);
       if (isLoading) setIsLoading(false);
     }
-  }, [isLoading]);
+  }, [onPageChange]);
 
-  //Event listener for the focus
   useEffect(() => {
     if (!isActive) return;
 
@@ -54,29 +55,27 @@ const ParameterDisplay = ({ parameters, isActive}) => {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [parameters.length, isActive]);
 
-  // Handle Polling
   useEffect(() => {
-      fetchParameters(); 
+    fetchParameters(); 
+    const intervalId = setInterval(() => {
+      fetchParameters();
+    }, UPDATE_INTERVAL_MS);
 
-      const intervalId = setInterval(() => {
-        fetchParameters();
-      }, UPDATE_INTERVAL_MS);
+    return () => clearInterval(intervalId);
+  }, [fetchParameters]);
 
-      return () => clearInterval(intervalId);
-    }, [fetchParameters]);
+  if (error) return <div className="error">Error: {error}</div>
 
-    if (error) return <div className="error">Error: {error}</div>
-
-    return (
-      <div className="parameter-list-container">
-        {parameters.map((param, index) => {
+  return (
+    <div className="parameter-rows-wrapper">
+      {parameters.map((param, index) => {
         const displayValue = data[param.key] !== undefined ? data[param.key] : "---";
         const isFocused = index === activeIndex;
 
         return (
           <div 
             key={param.key} 
-            className={`parameter-row ${isFocused ? "focused" : ""}`} // Schoner dan je oude versie
+            className={`parameter-row ${isFocused ? "focused" : ""}`}
           >
             <div className="parameter-label">{param.label}</div>
             <div className="parameter-value"> 
@@ -84,9 +83,9 @@ const ParameterDisplay = ({ parameters, isActive}) => {
             </div>
           </div>
         );
-        })}
-      </div>
-    );
+      })}
+    </div>
+  );
 }
 
 export default ParameterDisplay;

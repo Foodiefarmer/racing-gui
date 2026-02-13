@@ -33,28 +33,22 @@ const TAB_CONFIG = [
 function App() {
   const [activeTab, setActiveTab] = useState(0);
 
-  useEffect(() => {
-    const handleKeyDown = (event) => {
-      const key = event.key.toLowerCase();
-      if (key === "d") {
-        setActiveTab((prev) => (prev + 1) % TAB_CONFIG.length);
-      } else if (key === "a") {
-        setActiveTab((prev) => (prev - 1 + TAB_CONFIG.length) % TAB_CONFIG.length);
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []);
+  const handlePageChange = (pageNumber) => {
+    const targetIndex = pageNumber - 1;
+    if (targetIndex !== activeTab && targetIndex >= 0 && targetIndex < TAB_CONFIG.length) {
+      setActiveTab(targetIndex);
+    }
+  };
 
   return (
     <div className="App-container">
       <LiveBlocks />
 
-      <div className="parameter-list-container"> {/* De witte box */}
+      <div className="parameter-list-container">
         <ParameterDisplay 
           parameters={TAB_CONFIG[activeTab].params} 
-          isActive={true} 
+          isActive={true}
+          onPageChange={handlePageChange}
         />
 
         <div className="tab-bar">
@@ -69,4 +63,5 @@ function App() {
     </div>
   );
 }
+
 export default App;
