@@ -6,6 +6,7 @@
   color: black;
   font-family: Arial, Helvetica, sans-serif; /*This might be changed later on in the project, depending on the font we end up choosing*/
   border: 1px solid #000000;
+  position: relative;
 }
 
 /*Style for each row*/
@@ -35,4 +36,40 @@
 /*Remove line at the bottom*/
 .parameter-row:last-child {
   border-bottom: none;
+}
+
+.parameter-row.focused {
+  background-color: #b0d6ff;
+  color: black;
+}
+
+/*focused row/value
+.parameter-value.focused {
+  background-color: #b0d6ff;
+  color: black;
+  font-weight: bold;
+}*/
+
+.tab-bar {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.tab-item {
+  width: 10px;
+  height: 10px;
+  background-color: #999;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+}
+
+
+.tab-item.active {
+  background-color: #000000;
 }

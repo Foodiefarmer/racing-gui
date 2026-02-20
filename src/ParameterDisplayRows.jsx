@@ -1,50 +1,91 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import "./DisplayRows.css";
 
-//Definition of initial parameter values
-const initialValues = {
-  TV_g: "11",
-  TC_TV_map: "68",
-  Mu: "1.6",
-  Bypass: "0"
-};
+const ParameterDisplay = ({ parameters, isActive, onPageChange }) => {
+  const UPDATE_INTERVAL_MS = 200;
 
-const ParameterDisplay = () => {
-  //useState hook for managing all the parameter values
-  const [data, setData] = useState(initialValues);
+  const [data, setData] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [activeIndex, setActiveIndex] = useState(0);
 
-  const allParameters = [
-    {label: "TV_g", key: "TV_g"},
-    {label: "TC_TV_map", key: "TC_TV_map"},
-    {label: "Mu", key: "Mu"},
-    {label: "Bypass", key: "Bypass"}
-  ]
+  const fetchParameters = useCallback(async () => {
+    try {
+      const response = await fetch('/parameters.json');
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
+      const jsonArray = await response.json();
+      
+      const pageData = jsonArray.find(obj => obj.page !== undefined);
+      if (pageData && onPageChange) {
+        onPageChange(pageData.page);
+      }
 
-  const handleUpdate = (key, newValue) => {
-    setData(prevData => ({
-      ...prevData,
-      [key]: newValue,
-    }));
-  };
+      const formattedData = jsonArray.reduce((acc, item) => {
+        if (item.name) {
+          acc[item.name] = item.value;
+        }
+        return acc;
+      }, {});
+
+      setData(formattedData);
+      setIsLoading(false);
+      setError(null);
+    } catch (e) {
+      console.error("Failed to fetch parameters:", e);
+      setError(e.message);
+      if (isLoading) setIsLoading(false);
+    }
+  }, [onPageChange]);
+
+  useEffect(() => {
+    if (!isActive) return;
+
+    const handleKeyDown = (event) => {
+      if (event.key === "ArrowDown") {
+        setActiveIndex((prev) => (prev + 1) % parameters.length);
+      } else if (event.key === "ArrowUp") {
+        setActiveIndex((prev) => (prev - 1 + parameters.length) % parameters.length);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [parameters.length, isActive]);
+
+  useEffect(() => {
+    fetchParameters(); 
+    const intervalId = setInterval(() => {
+      fetchParameters();
+    }, UPDATE_INTERVAL_MS);
+
+    return () => clearInterval(intervalId);
+  }, [fetchParameters]);
+
+  if (error) return <div className="error">Error: {error}</div>
 
   return (
-    //Map through the structure and render all the rows
-    <div className="parameter-list-container">
-      {allParameters.map((param, index) => {
-          const displayValue = data[param.key];
+    <div className="parameter-rows-wrapper">
+      {parameters.map((param, index) => {
+        const displayValue = data[param.key] !== undefined ? data[param.key] : "---";
+        const isFocused = index === activeIndex;
 
-          return (
-            <div
-              key={param.key}
-              className="parameter-row"
-            >
-              <div className="parameter-label">{param.label}</div>
-              <div className="parameter-value">{displayValue}</div>
+        return (
+          <div 
+            key={param.key} 
+            className={`parameter-row ${isFocused ? "focused" : ""}`}
+          >
+            <div className="parameter-label">{param.label}</div>
+            <div className="parameter-value"> 
+              {isLoading && displayValue === "---" ? "Loading..." : displayValue}
             </div>
-          );
+          </div>
+        );
       })}
     </div>
   );
-};
+}
 
 export default ParameterDisplay;
