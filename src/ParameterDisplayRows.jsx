@@ -1,13 +1,19 @@
 import React, { useState, useEffect, useCallback } from "react";
 import "./DisplayRows.css";
 
-const ParameterDisplay = ({ parameters, isActive, onPageChange }) => {
+const ParameterDisplay = ({ parameters, isActive, onPageChange, onFocusChange, activeFocus }) => {
   const UPDATE_INTERVAL_MS = 200;
 
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    if (activeFocus !== undefined && activeFocus >= 0 && activeFocus < parameters.length) {
+      setActiveIndex(activeFocus);
+    }
+  }, [activeFocus, parameters.length]);
 
   const fetchParameters = useCallback(async () => {
     try {
@@ -21,6 +27,11 @@ const ParameterDisplay = ({ parameters, isActive, onPageChange }) => {
       const pageData = jsonArray.find(obj => obj.page !== undefined);
       if (pageData && onPageChange) {
         onPageChange(pageData.page);
+      }
+
+      const focusData = jsonArray.find(obj => obj.focus !== undefined);
+      if (focusData && onFocusChange) {
+        onFocusChange(focusData.focus);
       }
 
       const formattedData = jsonArray.reduce((acc, item) => {
@@ -38,7 +49,7 @@ const ParameterDisplay = ({ parameters, isActive, onPageChange }) => {
       setError(e.message);
       if (isLoading) setIsLoading(false);
     }
-  }, [onPageChange]);
+  }, [onPageChange, onFocusChange]);
 
   useEffect(() => {
     if (!isActive) return;

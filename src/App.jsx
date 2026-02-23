@@ -32,11 +32,19 @@ const TAB_CONFIG = [
 
 function App() {
   const [activeTab, setActiveTab] = useState(0);
+  const [activeFocus, setActiveFocus] = useState(0);
 
   const handlePageChange = (pageNumber) => {
     const targetIndex = pageNumber - 1;
     if (targetIndex !== activeTab && targetIndex >= 0 && targetIndex < TAB_CONFIG.length) {
       setActiveTab(targetIndex);
+    }
+  };
+
+  const handleFocusChange = (focusIndex) => {
+    const targetFocus = focusIndex - 1;
+    if (targetFocus !== activeFocus) {
+      setActiveFocus(targetFocus);
     }
   };
 
@@ -49,6 +57,8 @@ function App() {
           parameters={TAB_CONFIG[activeTab].params} 
           isActive={true}
           onPageChange={handlePageChange}
+          onFocusChange={handleFocusChange}
+          activeFocus={activeFocus}
         />
 
         <div className="tab-bar">
