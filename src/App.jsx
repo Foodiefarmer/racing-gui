@@ -33,6 +33,7 @@ const TAB_CONFIG = [
 function App() {
   const [activeTab, setActiveTab] = useState(0);
   const [activeFocus, setActiveFocus] = useState(0);
+  const [autoMode, setAutoMode] = useState(false);
 
   const handlePageChange = (pageNumber) => {
     const targetIndex = pageNumber - 1;
@@ -59,16 +60,19 @@ function App() {
           onPageChange={handlePageChange}
           onFocusChange={handleFocusChange}
           activeFocus={activeFocus}
+          setAutoModeExternal={setAutoMode}
         />
 
-        <div className="tab-bar">
-          {TAB_CONFIG.map((tab, index) => (
-            <div 
-              key={tab.id} 
-              className={`tab-item ${activeTab === index ? "active" : ""}`}
-            />
-          ))}
-        </div>
+        {!autoMode && (
+          <div className="tab-bar">
+            {TAB_CONFIG.map((tab, index) => (
+              <div 
+                key={tab.id} 
+                className={`tab-item ${activeTab === index ? "active" : ""}`}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

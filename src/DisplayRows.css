@@ -38,17 +38,11 @@
   border-bottom: none;
 }
 
+/*Set colour for focused parameter*/
 .parameter-row.focused {
   background-color: #b0d6ff;
   color: black;
 }
-
-/*focused row/value
-.parameter-value.focused {
-  background-color: #b0d6ff;
-  color: black;
-  font-weight: bold;
-}*/
 
 .tab-bar {
   position: absolute;
@@ -72,4 +66,22 @@
 
 .tab-item.active {
   background-color: #000000;
+}
+
+.autonomous-mode-overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 195px;
+  width: 100%;
+  text-align: center;
+  background-color: white;
+  box-sizing: border-box;
+}
+
+.autonomous-mode-overlay h2 {
+  margin: 0;
+  color: black;
+  font-size: 1.1rem;
+  font-weight: bold;
 }

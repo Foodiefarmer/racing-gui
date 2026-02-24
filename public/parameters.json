@@ -154,9 +154,12 @@
         "value": 0
     },
     {
-        "page": 1
+        "page": 4
     },
     {
         "focus": 1
+    },
+    {
+        "autoMode": true
     }
 ]
