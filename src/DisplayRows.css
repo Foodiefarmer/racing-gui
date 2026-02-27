@@ -1,0 +1,87 @@
+/*Container for the entire app*/
+.parameter-list-container {
+  max-width: 318px;
+  max-height: 320px;
+  background-color: rgb(255, 255, 255);
+  color: black;
+  font-family: Arial, Helvetica, sans-serif; /*This might be changed later on in the project, depending on the font we end up choosing*/
+  border: 1px solid #000000;
+  position: relative;
+}
+
+/*Style for each row*/
+.parameter-row {
+  display: flex;
+  justify-content: space-between; /*Push parameter name to left and value to the right*/
+  align-items: center;
+  padding: 15px 10px;
+  border-bottom: 1px solid black;
+}
+
+/*Style for parameter name(/label)*/
+.parameter-label {
+  font-style: normal;
+}
+
+/*Style for parameter value*/
+.parameter-value {
+  font-style: normal;
+}
+
+/*Creater thicker line below last live parameter*/
+.parameter-row:nth-child(6) {
+  border-bottom: 2px solid black;
+}
+
+/*Remove line at the bottom*/
+.parameter-row:last-child {
+  border-bottom: none;
+}
+
+/*Set colour for focused parameter*/
+.parameter-row.focused {
+  background-color: #b0d6ff;
+  color: black;
+}
+
+.tab-bar {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.tab-item {
+  width: 10px;
+  height: 10px;
+  background-color: #999;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+}
+
+
+.tab-item.active {
+  background-color: #000000;
+}
+
+.autonomous-mode-overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 195px;
+  width: 100%;
+  text-align: center;
+  background-color: white;
+  box-sizing: border-box;
+}
+
+.autonomous-mode-overlay h2 {
+  margin: 0;
+  color: black;
+  font-size: 1.1rem;
+  font-weight: bold;
+}

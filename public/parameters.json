@@ -1,0 +1,165 @@
+[
+    {
+        "id": 1,
+        "name": "Core Temp",
+        "unit": "°C",
+        "dataType": "numeric",
+        "value": 150.00
+    },
+    {
+        "id": 2,
+        "name": "Break Pressure",
+        "unit": "bar",
+        "dataType": "numeric",
+        "value": 10.0
+    },
+    {
+        "id": 3,
+        "name": "Coolant Flow Rate",
+        "unit": "L/min",
+        "dataType": "numeric",
+        "value": 50.0
+    },
+    {
+        "id": 4,
+        "name": "Valve Status A1",
+        "unit": "",
+        "dataType": "numeric",
+        "value": 1
+    },
+    {
+        "id": 5,
+        "name": "Power Output",
+        "unit": "kW",
+        "dataType": "numeric",
+        "value": 800.0
+    },
+    {
+        "id": 6,
+        "name": "Rotation Speed",
+        "unit": "RPM",
+        "dataType": "numeric",
+        "value": 1500
+    },
+    {
+        "id": 7,
+        "name": "TV_g",
+        "unit": "",
+        "dataType": "numeric",
+        "value": 11
+    },
+    {
+        "id": 8,
+        "name": "TC_TV_map",
+        "unit": "",
+        "dataType": "numeric",
+        "value": 68
+    },
+    {
+        "id": 9,
+        "name": "Mu",
+        "unit": "",
+        "dataType": "numeric",
+        "value": 1.6
+    },
+    {
+        "id": 10,
+        "name": "Bypass",
+        "unit": "",
+        "dataType": "numeric",
+        "value": 0
+    },
+    {
+        "id": 11,
+        "name": "Mode",
+        "unit": "",
+        "dataType": "numeric",
+        "value": 0
+    },
+    {
+        "id": 12,
+        "name": "Rgdis",
+        "unit": "",
+        "dataType": "numeric",
+        "value": 55
+    },
+    {
+        "id": 13,
+        "name": "Regagg",
+        "unit": "",
+        "dataType": "numeric",
+        "value": 0
+    },
+    {
+        "id": 14,
+        "name": "Plim",
+        "unit": "",
+        "dataType": "numeric",
+        "value": 80
+    },
+    {
+        "id": 15,
+        "name": "Plim_reg",
+        "unit": "",
+        "dataType": "numeric",
+        "value": 60
+    },
+    {
+        "id": 16,
+        "name": "Tmax",
+        "unit": "",
+        "dataType": "numeric",
+        "value": 26
+    },
+    {
+        "id": 17,
+        "name": "Tmax_reg",
+        "unit": "",
+        "dataType": "numeric",
+        "value": 20
+    },
+    {
+        "id": 18,
+        "name": "DRS_ON",
+        "unit": "",
+        "dataType": "numeric",
+        "value": 1
+    },
+    {
+        "id": 19,
+        "name": "Fans_on",
+        "unit": "",
+        "dataType": "numeric",
+        "value": 1
+    },
+    {
+        "id": 20,
+        "name": "FR_distr",
+        "unit": "",
+        "dataType": "numeric",
+        "value": 1
+    },
+    {
+        "id": 21,
+        "name": "Keuze_param1",
+        "unit": "",
+        "dataType": "numeric",
+        "value": 0
+    },
+    {
+        "id": 22,
+        "name": "Keuze_param2",
+        "unit": "",
+        "dataType": "numeric",
+        "value": 0
+    },
+    {
+        "page": 4
+    },
+    {
+        "focus": 1
+    },
+    {
+        "autoMode": true
+    }
+]
