@@ -1,165 +1,165 @@
 [
     {
-        "id": 1,
+        "unit": "\u00b0C",
         "name": "Core Temp",
-        "unit": "°C",
-        "dataType": "numeric",
-        "value": 150.00
+        "id": 1,
+        "value": 150.0,
+        "dataType": "numeric"
     },
     {
-        "id": 2,
-        "name": "Break Pressure",
         "unit": "bar",
-        "dataType": "numeric",
-        "value": 10.0
+        "name": "Break Pressure",
+        "id": 2,
+        "value": 10.0,
+        "dataType": "numeric"
     },
     {
-        "id": 3,
-        "name": "Coolant Flow Rate",
         "unit": "L/min",
-        "dataType": "numeric",
-        "value": 50.0
+        "name": "Coolant Flow Rate",
+        "id": 3,
+        "value": 50.0,
+        "dataType": "numeric"
     },
     {
-        "id": 4,
+        "unit": "",
         "name": "Valve Status A1",
-        "unit": "",
-        "dataType": "numeric",
-        "value": 1
+        "id": 4,
+        "value": 1,
+        "dataType": "numeric"
     },
     {
-        "id": 5,
-        "name": "Power Output",
         "unit": "kW",
-        "dataType": "numeric",
-        "value": 800.0
+        "name": "Power Output",
+        "id": 5,
+        "value": 800.0,
+        "dataType": "numeric"
     },
     {
-        "id": 6,
-        "name": "Rotation Speed",
         "unit": "RPM",
-        "dataType": "numeric",
-        "value": 1500
+        "name": "Rotation Speed",
+        "id": 6,
+        "value": 1500,
+        "dataType": "numeric"
     },
     {
-        "id": 7,
+        "unit": "",
         "name": "TV_g",
-        "unit": "",
-        "dataType": "numeric",
-        "value": 11
+        "id": 7,
+        "value": -115,
+        "dataType": "numeric"
     },
     {
-        "id": 8,
+        "unit": "",
         "name": "TC_TV_map",
-        "unit": "",
-        "dataType": "numeric",
-        "value": 68
+        "id": 8,
+        "value": 68,
+        "dataType": "numeric"
     },
     {
-        "id": 9,
+        "unit": "",
         "name": "Mu",
-        "unit": "",
-        "dataType": "numeric",
-        "value": 1.6
+        "id": 9,
+        "value": 452.6,
+        "dataType": "numeric"
     },
     {
-        "id": 10,
+        "unit": "",
         "name": "Bypass",
-        "unit": "",
-        "dataType": "numeric",
-        "value": 0
+        "id": 10,
+        "value": 0,
+        "dataType": "numeric"
     },
     {
-        "id": 11,
+        "unit": "",
         "name": "Mode",
-        "unit": "",
-        "dataType": "numeric",
-        "value": 0
+        "id": 11,
+        "value": 287,
+        "dataType": "numeric"
     },
     {
-        "id": 12,
+        "unit": "",
         "name": "Rgdis",
-        "unit": "",
-        "dataType": "numeric",
-        "value": 55
+        "id": 12,
+        "value": 55,
+        "dataType": "numeric"
     },
     {
-        "id": 13,
+        "unit": "",
         "name": "Regagg",
-        "unit": "",
-        "dataType": "numeric",
-        "value": 0
+        "id": 13,
+        "value": -43,
+        "dataType": "numeric"
     },
     {
-        "id": 14,
+        "unit": "",
         "name": "Plim",
-        "unit": "",
-        "dataType": "numeric",
-        "value": 80
+        "id": 14,
+        "value": 130,
+        "dataType": "numeric"
     },
     {
-        "id": 15,
+        "unit": "",
         "name": "Plim_reg",
-        "unit": "",
-        "dataType": "numeric",
-        "value": 60
+        "id": 15,
+        "value": 60,
+        "dataType": "numeric"
     },
     {
-        "id": 16,
+        "unit": "",
         "name": "Tmax",
-        "unit": "",
-        "dataType": "numeric",
-        "value": 26
+        "id": 16,
+        "value": 26,
+        "dataType": "numeric"
     },
     {
-        "id": 17,
+        "unit": "",
         "name": "Tmax_reg",
-        "unit": "",
-        "dataType": "numeric",
-        "value": 20
+        "id": 17,
+        "value": 24,
+        "dataType": "numeric"
     },
     {
-        "id": 18,
+        "unit": "",
         "name": "DRS_ON",
-        "unit": "",
-        "dataType": "numeric",
-        "value": 1
+        "id": 18,
+        "value": 1,
+        "dataType": "numeric"
     },
     {
-        "id": 19,
+        "unit": "",
         "name": "Fans_on",
-        "unit": "",
-        "dataType": "numeric",
-        "value": 1
+        "id": 19,
+        "value": -1,
+        "dataType": "numeric"
     },
     {
-        "id": 20,
+        "unit": "",
         "name": "FR_distr",
-        "unit": "",
-        "dataType": "numeric",
-        "value": 1
+        "id": 20,
+        "value": 1,
+        "dataType": "numeric"
     },
     {
-        "id": 21,
+        "unit": "",
         "name": "Keuze_param1",
-        "unit": "",
-        "dataType": "numeric",
-        "value": 0
+        "id": 21,
+        "value": 32,
+        "dataType": "numeric"
     },
     {
-        "id": 22,
-        "name": "Keuze_param2",
         "unit": "",
-        "dataType": "numeric",
-        "value": 0
+        "name": "Keuze_param2",
+        "id": 22,
+        "value": 61,
+        "dataType": "numeric"
+    },
+    {
+        "autodrive": false
     },
     {
         "page": 4
     },
     {
-        "focus": 1
-    },
-    {
-        "autoMode": true
+        "focus": 4
     }
 ]

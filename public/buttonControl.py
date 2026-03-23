@@ -83,7 +83,7 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
 LR_PINS = {'A': 21, 'B': 20}
-RR_PINS = {'A': 26, 'B': 19}
+RR_PINS = {'A': 19, 'B': 26}
 BTN_PAGE_DN, BTN_PAGE_UP = 5, 12
 BTN_FOCUS_DN, BTN_FOCUS_UP = 6, 16
 BTN_AUTODRIVE = 13

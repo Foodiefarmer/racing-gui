@@ -1,1 +1,4 @@
-/*file for css used across all the lay-outs*/
+* {
+margin: 0px;
+padding: 0px;
+}
